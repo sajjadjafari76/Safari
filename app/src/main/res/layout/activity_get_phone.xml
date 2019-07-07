@@ -9,11 +9,21 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/linear"
+        android:layout_above="@id/text"
         android:gravity="center"
-        android:text="ورود"
+        android:text="ثبت نام"
         android:textColor="#111"
         android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linear"
+        android:gravity="center"
+        android:text="وارد کردن شماره تلفن"
+        android:textColor="#111"
+        android:textSize="14sp" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -33,29 +43,20 @@
             android:inputType="phone"
             tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="رمز عبور"
-            android:inputType="textPassword"
-            tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="ورورد" />
+            android:text="دریافت کد" />
 
         <TextView
-            android:id="@+id/text_register"
+            android:id="@+id/text_login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="کاربر جدید هستید؟  ثبت نام"
+            android:text="قبلا ثبت نام کردم !"
             android:textColor="#222"
             android:textSize="14sp" />
     </LinearLayout>

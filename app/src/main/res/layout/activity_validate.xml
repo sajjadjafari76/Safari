@@ -9,11 +9,21 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/linear"
+        android:layout_above="@id/text"
         android:gravity="center"
-        android:text="ورود"
+        android:text="ثبت نام"
         android:textColor="#111"
         android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/linear"
+        android:gravity="center"
+        android:text="وارد کردن کد پیامک شده"
+        android:textColor="#111"
+        android:textSize="14sp" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -24,38 +34,29 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/edt_phone"
+            android:id="@+id/edt_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="right"
-            android:hint="شماره موبایل"
-            android:inputType="phone"
+            android:hint="کد"
+            android:inputType="text"
             tools:ignore="MissingConstraints" />
 
-        <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="رمز عبور"
-            android:inputType="textPassword"
-            tools:ignore="MissingConstraints" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:text="ورورد" />
+            android:text="ادامه" />
 
         <TextView
-            android:id="@+id/text_register"
+            android:id="@+id/text_again"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:text="کاربر جدید هستید؟  ثبت نام"
+            android:text="کد را دریافت نکردم !"
             android:textColor="#222"
             android:textSize="14sp" />
     </LinearLayout>
