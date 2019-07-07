@@ -4,9 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.pm.PackageManager;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.annotation.NonNull;
+//import android.support.design.widget.Snackbar;
+//import android.support.v7.app.AppCompatActivity;
 import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.CursorLoader;
@@ -29,14 +29,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.fanava.rally.R;
-import com.fanava.rally.server.Listeners;
-import com.fanava.rally.server.ShowData;
+//import com.fanava.rally.server.Listeners;
+//import com.fanava.rally.server.ShowData;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -49,7 +51,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 public class LoginActivity extends AppCompatActivity {
 
 
-ShowData showData;
+//ShowData showData;
     // UI references.
     private EditText txt_username;
     private EditText txt_PasswordView;
@@ -119,23 +121,23 @@ ShowData showData;
             // form field with an error.
             focusView.requestFocus();
         } else {
-            showData=new ShowData();
+//            showData=new ShowData();
             showProgress(true);
               Map<String, String> jsonParams = new HashMap<String, String>();
              jsonParams.put("username",txt_username.getText().toString());
              jsonParams.put("password",txt_PasswordView.getText().toString());
              JSONObject jsonObject=new JSONObject(jsonParams);
-             showData.insert(getApplicationContext(), "racer/login", jsonObject, new Listeners.OnSuccessListener() {
-                 @Override
-                 public void onSuccess(JSONArray jsonObject) {
-                     showProgress(false);
-                 }
-
-                 @Override
-                 public void onError(String error) {
-                     showProgress(false);
-                 }
-             });
+//             showData.insert(getApplicationContext(), "racer/login", jsonObject, new Listeners.OnSuccessListener() {
+//                 @Override
+//                 public void onSuccess(JSONArray jsonObject) {
+//                     showProgress(false);
+//                 }
+//
+//                 @Override
+//                 public void onError(String error) {
+//                     showProgress(false);
+//                 }
+//             });
 
 
         }

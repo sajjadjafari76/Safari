@@ -2,7 +2,7 @@ package com.fanava.rally.view;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
+//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,10 +10,12 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.fanava.rally.Model.carModelView;
+//import com.fanava.rally.Model.carModelView;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.fanava.rally.R;
 import com.fanava.rally.Utils.Statics;
-import com.fanava.rally.server.ShowData;
+//import com.fanava.rally.server.ShowData;
 
 public class CarActivity extends AppCompatActivity {
 public ImageView img_pelak;
@@ -48,12 +50,12 @@ public int position=-1;
         position=getIntent().getIntExtra("position",-1);
         if(position>=0)
         {
-            img_pelak.setImageURI(Statics.viewList.get(position).getCar_pelak());
-            img_bimeh.setImageURI(Statics.viewList.get(position).getCar_bimeh());
-            img_car.setImageURI(Statics.viewList.get(position).getCar_pic());
-            txt_name.setText(Statics.viewList.get(position).getCarName());
-            txt_model.setText(Statics.viewList.get(position).getModel());
-            txt_color.setText(Statics.viewList.get(position).getColor());
+//            img_pelak.setImageURI(Statics.viewList.get(position).getCar_pelak());
+//            img_bimeh.setImageURI(Statics.viewList.get(position).getCar_bimeh());
+//            img_car.setImageURI(Statics.viewList.get(position).getCar_pic());
+//            txt_name.setText(Statics.viewList.get(position).getCarName());
+//            txt_model.setText(Statics.viewList.get(position).getModel());
+//            txt_color.setText(Statics.viewList.get(position).getColor());
         }
 
         img_car.setOnClickListener(new View.OnClickListener() {
@@ -92,19 +94,19 @@ img_pelak.setOnClickListener(new View.OnClickListener() {
 btn_submit.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        carModelView model=new carModelView();
-        model.setColor(txt_color.getText().toString());
-        model.setCarName(txt_name.getText().toString());
-        model.setModel(txt_model.getText().toString());
-        model.setCar_bimeh(uri_bimeh);
-        model.setCar_pelak(uri_pelak);
-        model.setCar_pic(uri_car);
-        if(position>=0){
-            Statics.viewList.set(position,model);
-        }
-else
-        Statics.viewList.add(model);
-        finish();
+//        carModelView model=new carModelView();
+//        model.setColor(txt_color.getText().toString());
+//        model.setCarName(txt_name.getText().toString());
+//        model.setModel(txt_model.getText().toString());
+//        model.setCar_bimeh(uri_bimeh);
+//        model.setCar_pelak(uri_pelak);
+//        model.setCar_pic(uri_car);
+//        if(position>=0){
+//            Statics.viewList.set(position,model);
+//        }
+//else
+//        Statics.viewList.add(model);
+//        finish();
     }
 });
     }

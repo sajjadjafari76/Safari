@@ -2,7 +2,7 @@ package com.fanava.rally.Utils;
 
 import android.app.NotificationChannel;
 import android.os.Build;
-import android.support.v4.app.NotificationCompat;
+//import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 
 import com.fanava.rally.R;
