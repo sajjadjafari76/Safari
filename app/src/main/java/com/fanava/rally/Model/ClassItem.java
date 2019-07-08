@@ -5,7 +5,6 @@ import org.json.JSONObject;
 
 public class ClassItem {
     public int id;
-    public int mode;
     public String image;
     public String competitionNumber;
     public String location;
@@ -14,11 +13,10 @@ public class ClassItem {
     public ClassItem(JSONObject jsonObject) {
         try {
             this.id = jsonObject.getInt("id");
-            this.mode = jsonObject.getInt("mode");
-            this.image = jsonObject.getString("image");
-            this.competitionNumber = jsonObject.getString("competitionNumber");
-            this.location = jsonObject.getString("location");
-            this.date = jsonObject.getString("date");
+            this.image = jsonObject.getString("avatar");
+            this.competitionNumber = jsonObject.getString("name");
+            this.location = jsonObject.getString("city");
+            this.date = jsonObject.getString("raceDate");
         } catch (JSONException e) {
             e.printStackTrace();
         }

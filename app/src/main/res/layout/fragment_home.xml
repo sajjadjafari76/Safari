@@ -53,6 +53,8 @@
                     android:layout_marginBottom="10dp">
 
                     <RelativeLayout
+                        android:layout_margin="4dp"
+                        android:background="@drawable/back_3"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1">
@@ -73,8 +75,10 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:layout_margin="4dp"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
+                        android:background="@drawable/back_1"
                         android:layout_weight="1">
 
                         <ImageView
@@ -93,9 +97,12 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:layout_margin="4dp"
+
+                        android:background="@drawable/back"
                         android:id="@+id/re_Tournament_table"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
+                        android:layout_height="100dp"
                         android:layout_weight="1">
 
                         <ImageView
@@ -103,7 +110,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
-                            android:src="@drawable/ic_home" />
+                           />
 
                         <TextView
                             android:layout_width="match_parent"

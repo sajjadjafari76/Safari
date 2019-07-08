@@ -6,92 +6,96 @@
     android:layout_height="match_parent"
     tools:context=".Account.LoginActivity">
 
-    <TextView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/text"
-        android:gravity="center"
-        android:text="ثبت نام"
-        android:textColor="#111"
-        android:textSize="40sp" />
+        android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/linear"
-        android:gravity="center"
-        android:text="تکمیل اطلاعات"
-        android:textColor="#111"
-        android:textSize="14sp" />
-
-    <LinearLayout
-        android:id="@+id/linear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="30dp"
-        android:orientation="vertical">
-
-        <EditText
-            android:id="@+id/edt_name"
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="نام"
-            android:inputType="text"
-            tools:ignore="MissingConstraints" />
+            android:layout_above="@id/text"
+            android:gravity="center"
+            android:text="ثبت نام"
+            android:textColor="#111"
+            android:textSize="40sp" />
 
-
-        <EditText
-            android:id="@+id/edt_family"
+        <TextView
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="نام خانوادگی"
-            android:inputType="text" />
+            android:layout_above="@id/linear"
+            android:gravity="center"
+            android:text="تکمیل اطلاعات"
+            android:textColor="#111"
+            android:textSize="14sp" />
 
-        <EditText
-            android:id="@+id/edt_national_number"
+        <LinearLayout
+            android:id="@+id/linear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="شماره ملی"
-            android:inputType="number"
-            tools:ignore="MissingConstraints" />
+            android:layout_centerInParent="true"
+            android:layout_margin="30dp"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/edt_license_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="شماره گواهینامه"
-            android:inputType="number"
-            tools:ignore="MissingConstraints" />
-
-        <EditText
-            android:id="@+id/edt_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="رمز عبور"
-            android:inputType="textPassword"
-            tools:ignore="MissingConstraints" />
-
-        <Button
-            android:id="@+id/btn_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="ثبت نام" />
+            <EditText
+                android:id="@+id/edt_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:hint="نام"
+                android:inputType="text"
+                tools:ignore="MissingConstraints" />
 
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/edt_family"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:hint="نام خانوادگی"
+                android:inputType="text" />
+
+            <EditText
+                android:id="@+id/edt_national_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:hint="شماره ملی"
+                android:inputType="number"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/edt_license_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:hint="شماره گواهینامه"
+                android:inputType="number"
+                tools:ignore="MissingConstraints" />
+
+            <EditText
+                android:id="@+id/edt_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:gravity="right"
+                android:hint="رمز عبور"
+                android:inputType="textPassword"
+                tools:ignore="MissingConstraints" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="ثبت نام" />
 
 
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
 </RelativeLayout>
