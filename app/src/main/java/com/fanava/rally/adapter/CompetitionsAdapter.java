@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.fanava.rally.Model.ClassItem;
 import com.fanava.rally.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -23,9 +24,11 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
     List<ClassItem> mDataset;
     //    Context context; // کانتکست لیست
     private Context context;
+    int image;
 
-    public CompetitionsAdapter(Context context, List<ClassItem> mDataset) { // تابع سازنده
+    public CompetitionsAdapter(Context context, List<ClassItem> mDataset,int image) { // تابع سازنده
         this.mDataset = mDataset;
+        this.image = image;
         this.context = context;
     }
 
@@ -41,7 +44,23 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
     public void onBindViewHolder(CompetitionsAdapter.Holder holder, int position) {
 
         holder.setIsRecyclable(false);
-
+        switch (image){
+            case 0:
+                Picasso.get().load(mDataset.get(position).image)
+                        .error(R.drawable.ic_1)
+                        .into(holder.imageView);
+                break;
+            case 1:
+                Picasso.get().load(mDataset.get(position).image)
+                        .error(R.drawable.ic_2)
+                        .into(holder.imageView);
+                break;
+            case 2:
+                Picasso.get().load(mDataset.get(position).image)
+                        .error(R.drawable.ic_3)
+                        .into(holder.imageView);
+                break;
+        }
         holder.competitionNumber.setText(mDataset.get(position).competitionNumber);
         holder.location.setText(mDataset.get(position).location);
         holder.date.setText(mDataset.get(position).date);

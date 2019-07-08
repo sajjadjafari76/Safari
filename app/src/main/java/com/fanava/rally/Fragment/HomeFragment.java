@@ -132,25 +132,25 @@ public class HomeFragment extends Fragment implements OnclickMore {
         });
 
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
+        final StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
             @Override
-            public void onResponse(JSONArray response) {
+            public void onResponse(String response) {
                 try {
 
-                    JSONArray jsonArray = new JSONArray(response.getJSONArray(1));
+                    JSONArray jsonArray = new JSONArray(response);
 
                     for (int i = 0; i < jsonArray.length(); i++) {
 
                         ClassSlider sliderUtils = new ClassSlider();
 
-                        JSONObject jsonObject = jsonArray.getJSONObject(i);
+//                        JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                        sliderUtils.setSliderImageUrl(jsonObject.getString("src"));
+                        sliderUtils.setSliderImageUrl(jsonArray.getString(i));
 
 
                         sliderImg.add(sliderUtils);
 
-                        Log.i("adasdasasdfi", "onResponse: "+jsonObject);
+//                        Log.i("adasdasasdfi", "onResponse: "+jsonObject);
 
                     }
                 } catch (JSONException e) {
@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment implements OnclickMore {
                 for (int i = 0; i < dotscount; i++) {
 
                     dots[i] = new ImageView(getContext());
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_home));
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_unselect));
 
                     LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -177,9 +177,9 @@ public class HomeFragment extends Fragment implements OnclickMore {
 
                 }
 
-                dots[0].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_map));
-
+                dots[0].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_select));
             }
+
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {

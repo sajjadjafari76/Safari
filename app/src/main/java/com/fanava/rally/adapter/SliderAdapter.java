@@ -50,14 +50,15 @@ public class SliderAdapter extends PagerAdapter {
 
         ClassSlider utils = sliderImg.get(position);
 
-        ImageView imageView = (ImageView) view.findViewById(R.id.imageView);
+        ImageView imageView = (ImageView) view.findViewById(R.id.slider);
 
         imageLoader = CustomVolleyRequest.getInstance(context).getImageLoader();
 
         imageLoader.get(utils.getSliderImageUrl(),
                 ImageLoader.getImageListener(imageView,
-                        R.drawable.ic_home,
-                        android.R.drawable.ic_dialog_alert));
+                        R.drawable.spash_1,
+                        R.drawable.ic_car));
+
 
         view.setOnClickListener(new View.OnClickListener() {
             @Override

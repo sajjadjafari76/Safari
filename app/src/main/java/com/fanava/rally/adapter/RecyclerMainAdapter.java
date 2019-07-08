@@ -63,7 +63,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
                     holder.more.setTextColor(context.getResources().getColor(R.color.white));
                 }
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, true));
-                CompetitionsAdapter adapter_online = new CompetitionsAdapter(context, item.getListItem_online());
+                CompetitionsAdapter adapter_online = new CompetitionsAdapter(context, item.getListItem_online(),0);
                 holder.recyclerView.setAdapter(adapter_online);
 
                 holder.more.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +81,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
                     holder.more.setTextColor(context.getResources().getColor(R.color.white));
                 }
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, true));
-                CompetitionsAdapter adapter_last = new CompetitionsAdapter(context, item.getListItem_last());
+                CompetitionsAdapter adapter_last = new CompetitionsAdapter(context, item.getListItem_last(),1);
                 holder.recyclerView.setAdapter(adapter_last);
 
                 holder.more.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +99,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
                     holder.more.setTextColor(context.getResources().getColor(R.color.white));
                 }
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, true));
-                CompetitionsAdapter adapter_after = new CompetitionsAdapter(context, item.getListItem_after());
+                CompetitionsAdapter adapter_after = new CompetitionsAdapter(context, item.getListItem_after(),2);
                 holder.recyclerView.setAdapter(adapter_after);
 
                 holder.more.setOnClickListener(new View.OnClickListener() {

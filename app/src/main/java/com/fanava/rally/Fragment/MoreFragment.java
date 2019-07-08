@@ -30,7 +30,7 @@ public class MoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Toast.makeText(getContext(), mode, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), mode+"", Toast.LENGTH_SHORT).show();
         return inflater.inflate(R.layout.fragment_more, container, false);
     }
 }
