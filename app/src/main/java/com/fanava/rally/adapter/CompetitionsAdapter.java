@@ -25,26 +25,37 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
     //    Context context; // کانتکست لیست
     private Context context;
     int image;
+    int show;
 
-    public CompetitionsAdapter(Context context, List<ClassItem> mDataset,int image) { // تابع سازنده
+    public CompetitionsAdapter(Context context, List<ClassItem> mDataset, int image, int show) { // تابع سازنده
         this.mDataset = mDataset;
         this.image = image;
         this.context = context;
+        this.show = show;
     }
 
     @Override
     public CompetitionsAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.sample_item_competitions, parent, false);
-        CompetitionsAdapter.Holder holder = new CompetitionsAdapter.Holder(view);
-        return holder;
+
+        if (show == 1) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.sample_item_competitions_grid, parent, false);
+            CompetitionsAdapter.Holder holder = new CompetitionsAdapter.Holder(view);
+            return holder;
+        } else {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.sample_item_competitions, parent, false);
+            CompetitionsAdapter.Holder holder = new CompetitionsAdapter.Holder(view);
+            return holder;
+        }
+
     }
 
     @Override
     public void onBindViewHolder(CompetitionsAdapter.Holder holder, int position) {
 
         holder.setIsRecyclable(false);
-        switch (image){
+        switch (image) {
             case 0:
                 Picasso.get().load(mDataset.get(position).image)
                         .error(R.drawable.ic_1)
@@ -64,8 +75,6 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
         holder.competitionNumber.setText(mDataset.get(position).competitionNumber);
         holder.location.setText(mDataset.get(position).location);
         holder.date.setText(mDataset.get(position).date);
-
-
 
 
     }

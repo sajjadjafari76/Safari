@@ -2,6 +2,9 @@ package com.fanava.rally.Account.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,6 +32,7 @@ public class GetPhoneActivity extends AppCompatActivity {
     Button btn_register;
     TextView textView_login;
     String phone;
+    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,20 +58,22 @@ public class GetPhoneActivity extends AppCompatActivity {
         StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-
-
+                if (!response.isEmpty()) {
+                    prefs.edit().putString("token", response).apply();
+                    startActivity(new Intent(GetPhoneActivity.this, ValidateActivity.class));
+                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.i("login", "onErrorResponse: "+volleyError.toString());
+                Log.i("login", "onErrorResponse: " + volleyError.toString());
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("phone", phone);
-                return super.getParams();
+                return params;
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

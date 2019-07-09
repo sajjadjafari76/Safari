@@ -2,6 +2,9 @@ package com.fanava.rally.Account.Register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,15 +33,16 @@ public class ValidateActivity extends AppCompatActivity {
     Button btn_register;
     TextView textView_again;
     String code;
+    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_validate);
 
-        editText_code= findViewById(R.id.edt_code);
+        editText_code = findViewById(R.id.edt_code);
         btn_register = findViewById(R.id.btn_register);
-        textView_again= findViewById(R.id.text_again);
+        textView_again = findViewById(R.id.text_again);
 
 
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -56,19 +60,29 @@ public class ValidateActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
+                if (response.equals("true")) {
+                    startActivity(new Intent(ValidateActivity.this, InfomationActivity.class));
+                }
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.i("login", "onErrorResponse: "+volleyError.toString());
+                Log.i("login", "onErrorResponse: " + volleyError.toString());
             }
         }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("phone", code);
-                return super.getParams();
+                params.put("code", code);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> header = new HashMap<>();
+                header.put("Authorization", "bearer" + prefs.getString("token", ""));
+                return header;
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

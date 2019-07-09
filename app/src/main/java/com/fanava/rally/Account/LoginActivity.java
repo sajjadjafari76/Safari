@@ -2,7 +2,9 @@ package com.fanava.rally.Account;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.fanava.rally.Account.Register.GetPhoneActivity;
+import com.fanava.rally.Account.Register.ValidateActivity;
 import com.fanava.rally.Model.ClassItem;
 import com.fanava.rally.R;
 import com.fanava.rally.Utils.Url;
@@ -36,6 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btn_login;
     TextView textView_register;
     String phone, password;
+    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,16 +71,25 @@ public class LoginActivity extends AppCompatActivity {
 
     public void sendRequest() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.GlobalUrl + "", new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+
+                if (!response.isEmpty()) {
+                    prefs.edit().putString("token", response).apply();
+                    prefs.edit().putString("name", response).apply();
+                    prefs.edit().putString("family", response).apply();
+                    prefs.edit().putString("license", response).apply();
+                    prefs.edit().putString("license", response).apply();
+                    startActivity(new Intent(LoginActivity.this, ValidateActivity.class));
+                }
 
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-                Log.i("login", "onErrorResponse: "+volleyError.toString());
+                Log.i("login", "onErrorResponse: " + volleyError.toString());
             }
         }) {
             @Override
@@ -84,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 Map<String, String> params = new HashMap<>();
                 params.put("phone", phone);
                 params.put("password", password);
-                return super.getParams();
+                return params;
             }
         };
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));

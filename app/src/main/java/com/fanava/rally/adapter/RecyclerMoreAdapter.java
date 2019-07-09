@@ -1,13 +1,9 @@
 package com.fanava.rally.adapter;
 
 import android.content.Context;
-import android.graphics.ColorMatrix;
-import android.provider.Settings;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -16,13 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.fanava.rally.Fragment.TournamentTableFragment;
 import com.fanava.rally.Interface.OnclickMore;
 import com.fanava.rally.Model.ClassModel;
 import com.fanava.rally.R;
 
-
-public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapter.Holder> {
+public class RecyclerMoreAdapter extends RecyclerView.Adapter<RecyclerMoreAdapter.Holder> {
 
 
     //    List<GetDateMainList> mDataset; // لیست داده هایی از نوع مدل phone که در اداپتر هستند
@@ -34,7 +28,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
     FragmentTransaction transaction;
     OnclickMore onclickMore;
 
-    public RecyclerMainAdapter(Context context, boolean mode, ClassModel item, OnclickMore onclickMore) { // تابع سازنده
+    public RecyclerMoreAdapter(Context context, boolean mode, ClassModel item, OnclickMore onclickMore) { // تابع سازنده
 //        this.mDataset = myDataset;
         this.context = context;
         this.mode = mode;
@@ -43,15 +37,15 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
     }
 
     @Override
-    public RecyclerMainAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerMoreAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.sample_recylcer_main, parent, false);
-        RecyclerMainAdapter.Holder holder = new RecyclerMainAdapter.Holder(view);
+        RecyclerMoreAdapter.Holder holder = new RecyclerMoreAdapter.Holder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(RecyclerMainAdapter.Holder holder, int position) {
+    public void onBindViewHolder(RecyclerMoreAdapter.Holder holder, int position) {
 
         holder.setIsRecyclable(false);
         switch (position) {
@@ -63,7 +57,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
                     holder.more.setTextColor(context.getResources().getColor(R.color.white));
                 }
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, true));
-                CompetitionsAdapter adapter_online = new CompetitionsAdapter(context, item.getListItem_online(),0,0);
+                CompetitionsAdapter adapter_online = new CompetitionsAdapter(context, item.getListItem_online(), 0,0);
                 holder.recyclerView.setAdapter(adapter_online);
 
                 holder.more.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +75,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
                     holder.more.setTextColor(context.getResources().getColor(R.color.white));
                 }
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, true));
-                CompetitionsAdapter adapter_last = new CompetitionsAdapter(context, item.getListItem_last(),1,0);
+                CompetitionsAdapter adapter_last = new CompetitionsAdapter(context, item.getListItem_last(), 1,0);
                 holder.recyclerView.setAdapter(adapter_last);
 
                 holder.more.setOnClickListener(new View.OnClickListener() {
@@ -99,7 +93,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
                     holder.more.setTextColor(context.getResources().getColor(R.color.white));
                 }
                 holder.recyclerView.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, true));
-                CompetitionsAdapter adapter_after = new CompetitionsAdapter(context, item.getListItem_after(),2,0);
+                CompetitionsAdapter adapter_after = new CompetitionsAdapter(context, item.getListItem_after(), 2,0);
                 holder.recyclerView.setAdapter(adapter_after);
 
                 holder.more.setOnClickListener(new View.OnClickListener() {

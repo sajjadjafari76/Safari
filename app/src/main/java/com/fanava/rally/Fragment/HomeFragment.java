@@ -118,10 +118,10 @@ public class HomeFragment extends Fragment implements OnclickMore {
             public void onPageSelected(int position) {
 
                 for (int i = 0; i < dotscount; i++) {
-                    dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_home));
+                    dots[i].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_unselect));
                 }
 
-                dots[position].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.ic_account));
+                dots[position].setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.bg_select));
 //
             }
 
