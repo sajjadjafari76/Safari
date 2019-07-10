@@ -2,6 +2,7 @@ package com.fanava.rally.Fragment;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -31,13 +32,16 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.fanava.rally.Activity.InfoTournament;
 import com.fanava.rally.Interface.OnclickMore;
 import com.fanava.rally.Model.ClassItem;
 import com.fanava.rally.Model.ClassModel;
 import com.fanava.rally.Model.ClassSlider;
 import com.fanava.rally.R;
 import com.fanava.rally.Utils.CustomVolleyRequest;
+import com.fanava.rally.Utils.RecyclerItemClickListener;
 import com.fanava.rally.Utils.Url;
+import com.fanava.rally.adapter.CompetitionsAdapter;
 import com.fanava.rally.adapter.RecyclerMainAdapter;
 import com.fanava.rally.adapter.SliderAdapter;
 
@@ -97,6 +101,30 @@ public class HomeFragment extends Fragment implements OnclickMore {
         listItem_last = new ArrayList<>();
         listItem_online = new ArrayList<>();
 
+//        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(getContext(), new RecyclerItemClickListener.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View view, int position) {
+//                Intent intent = new Intent(getContext(), InfoTournament.class);
+//                switch (position) {
+//                    case 0:
+//                        intent.putExtra("id", listItem_online.get(position).id);
+//                        Toast.makeText(getContext(), listItem_online.get(position).id + "", Toast.LENGTH_SHORT).show();
+//                        startActivity(intent);
+//                        break;
+//                    case 1:
+//                        intent.putExtra("id", listItem_last.get(position).id);
+//                        Toast.makeText(getContext(), listItem_last.get(position).id + "", Toast.LENGTH_SHORT).show();
+//                        startActivity(intent);
+//                        break;
+//                    case 2:
+//                        intent.putExtra("id", listItem_after.get(position).id);
+//                        Toast.makeText(getContext(), listItem_after.get(position).id + "", Toast.LENGTH_SHORT).show();
+//                        startActivity(intent);
+//                        break;
+//                }
+//            }
+//        }));
+
 
 //****************************************** Slider ***************************************************************
         rq = CustomVolleyRequest.getInstance(getContext()).getRequestQueue();
@@ -132,7 +160,7 @@ public class HomeFragment extends Fragment implements OnclickMore {
         });
 
 
-        final StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+        final StringRequest jsonArrayRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 try {

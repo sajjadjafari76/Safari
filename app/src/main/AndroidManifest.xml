@@ -15,7 +15,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Account.Register.InfomationActivity"></activity>
+        <activity android:name=".Activity.InfoTournament">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
+
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
+        </activity>
+        <activity android:name=".Account.Register.InfomationActivity" />
         <activity android:name=".Account.Register.ValidateActivity" />
         <activity android:name=".Account.Register.GetPhoneActivity" />
         <activity android:name=".Account.LoginActivity" />

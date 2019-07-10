@@ -8,14 +8,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.fanava.rally.Activity.InfoTournament;
 import com.fanava.rally.Interface.OnclickMore;
 import com.fanava.rally.Model.ClassModel;
 import com.fanava.rally.R;
+import com.fanava.rally.Utils.RecyclerItemClickListener;
 import com.fanava.rally.adapter.RecyclerMainAdapter;
 
 public class TournamentTableFragment extends Fragment implements OnclickMore {
@@ -25,6 +29,7 @@ public class TournamentTableFragment extends Fragment implements OnclickMore {
     ClassModel classModel;
     FragmentTransaction transaction;
     private FragmentActivity myContext;
+    public static boolean main;
 
     public TournamentTableFragment(ClassModel classModel) {
         this.classModel = classModel;
@@ -41,6 +46,8 @@ public class TournamentTableFragment extends Fragment implements OnclickMore {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        main = true;
 
         View view = inflater.inflate(R.layout.fragment_tournament_table, container, false);
         transaction = myContext.getSupportFragmentManager().beginTransaction();

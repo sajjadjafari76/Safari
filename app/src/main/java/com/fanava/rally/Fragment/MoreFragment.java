@@ -69,28 +69,28 @@ public class MoreFragment extends Fragment implements OnclickMore {
         listItem_online = new ArrayList<>();
 
         gridLayoutManager = new GridLayoutManager(getContext(), 3);
-
-        EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {
-            @Override
-            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
-
-
-//ارسال اطلاعات به سرور برحسب تعداد  دلخواه پرش
-//array_list.size() تعداد ایتم های کنونی لود شده در ریسایکلر ویو
-
-                switch (mode) {
-                    case 0:
-                        sendRequestTakeover(listItem_online.size());
-                        break;
-                    case 1:
-                        sendRequestTakeover(listItem_last.size());
-                        break;
-                    case 2:
-                        sendRequestTakeover(listItem_after.size());
-                        break;
-                }
-            }
-        };
+        sendRequestTakeover(0);
+//        EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(gridLayoutManager) {
+//            @Override
+//            public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
+//
+//
+////ارسال اطلاعات به سرور برحسب تعداد  دلخواه پرش
+////array_list.size() تعداد ایتم های کنونی لود شده در ریسایکلر ویو
+//
+//                switch (mode) {
+//                    case 0:
+//                        sendRequestTakeover(listItem_online.size());
+//                        break;
+//                    case 1:
+//                        sendRequestTakeover(listItem_last.size());
+//                        break;
+//                    case 2:
+//                        sendRequestTakeover(listItem_after.size());
+//                        break;
+//                }
+//            }
+//        };
 
 //        sendRequestToserver( int offset){
 //            ret
@@ -102,7 +102,7 @@ public class MoreFragment extends Fragment implements OnclickMore {
 //            }
 //        }
 
-        recyclerView.addOnScrollListener(scrollListener);
+//        recyclerView.addOnScrollListener(scrollListener);
 
 
         return view;
@@ -110,7 +110,7 @@ public class MoreFragment extends Fragment implements OnclickMore {
 
     public void sendRequestTakeover(final int count) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://46.4.174.67:90/api/DataApp/Races", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://46.4.174.67:90/api/Race/MainPageRace", new Response.Listener<String>() {
             @Override
             public void onResponse(String respons) {
 
@@ -172,6 +172,7 @@ public class MoreFragment extends Fragment implements OnclickMore {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
+                map.put("count", "30");
                 map.put("offset", String.valueOf(count));
                 return map;
             }

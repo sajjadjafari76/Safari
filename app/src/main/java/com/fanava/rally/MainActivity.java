@@ -18,11 +18,15 @@ import com.etebarian.meowbottomnavigation.MeowBottomNavigation;
 import com.fanava.rally.Fragment.AccountFragment;
 import com.fanava.rally.Fragment.HomeFragment;
 import com.fanava.rally.Fragment.NavigationFragment;
+import com.fanava.rally.Fragment.TournamentTableFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
+import static com.fanava.rally.Fragment.TournamentTableFragment.main;
+
+//import com.fanava.rally.Fragment.TournamentTableFragment
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 
         fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
         fm.beginTransaction().add(R.id.main_container, navigationFragment).hide(navigationFragment).commit();
-        fm.beginTransaction().add(R.id.main_container,homeFragment).commit();
+        fm.beginTransaction().add(R.id.main_container, homeFragment).commit();
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -76,18 +80,44 @@ public class MainActivity extends AppCompatActivity
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.BNV_Home:
-                    fm.beginTransaction().hide(active).show(homeFragment).commit();
-                    active = homeFragment;
+                    if (main) {
+                        fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
+                        fm.beginTransaction().add(R.id.main_container, navigationFragment).hide(navigationFragment).commit();
+                        fm.beginTransaction().add(R.id.main_container, homeFragment).show(homeFragment).commit();
+                        active = homeFragment;
+                        main = false;
+                    } else {
+                        fm.beginTransaction().hide(active).show(homeFragment).commit();
+                        active = homeFragment;
+                    }
                     return true;
 //
                 case R.id.BNV_Map:
-                    fm.beginTransaction().hide(active).show(navigationFragment).commit();
-                    active = navigationFragment;
+                    if (main) {
+                        fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
+                        fm.beginTransaction().add(R.id.main_container, homeFragment).hide(homeFragment).commit();
+                        fm.beginTransaction().add(R.id.main_container, navigationFragment).show(navigationFragment).commit();
+                        active = navigationFragment;
+                        main = false;
+                    } else {
+                        fm.beginTransaction().hide(active).show(navigationFragment).commit();
+                        active = navigationFragment;
+                    }
+
                     return true;
 
                 case R.id.BNVAccount:
-                    fm.beginTransaction().hide(active).show(accountFragment).commit();
-                    active = accountFragment;
+
+                    if (main) {
+                        fm.beginTransaction().add(R.id.main_container, navigationFragment).hide(navigationFragment).commit();
+                        fm.beginTransaction().add(R.id.main_container, homeFragment).hide(homeFragment).commit();
+                        fm.beginTransaction().add(R.id.main_container, accountFragment).show(accountFragment).commit();
+                        active = accountFragment;
+                        main = false;
+                    } else {
+                        fm.beginTransaction().hide(active).show(accountFragment).commit();
+                        active = accountFragment;
+                    }
                     return true;
             }
             return false;
@@ -101,7 +131,11 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            try {
+                super.onBackPressed();
+            } catch (Exception e) {
+
+            }
         }
     }
 

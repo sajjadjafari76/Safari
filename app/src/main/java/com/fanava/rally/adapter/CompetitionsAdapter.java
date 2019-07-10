@@ -1,17 +1,21 @@
 package com.fanava.rally.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.fanava.rally.Activity.InfoTournament;
 import com.fanava.rally.Model.ClassItem;
 import com.fanava.rally.R;
 import com.squareup.picasso.Picasso;
@@ -52,9 +56,9 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
     }
 
     @Override
-    public void onBindViewHolder(CompetitionsAdapter.Holder holder, int position) {
+    public void onBindViewHolder(CompetitionsAdapter.Holder holder, final int position) {
 
-        holder.setIsRecyclable(false);
+//        holder.setIsRecyclable(false);
         switch (image) {
             case 0:
                 Picasso.get().load(mDataset.get(position).image)
@@ -76,6 +80,15 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
         holder.location.setText(mDataset.get(position).location);
         holder.date.setText(mDataset.get(position).date);
 
+        holder.parent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, InfoTournament.class);
+                intent.putExtra("id", mDataset.get(position).id);
+                Toast.makeText(context, mDataset.get(position).id + "", Toast.LENGTH_SHORT).show();
+                context.startActivity(intent);
+            }
+        });
 
     }
 
@@ -90,6 +103,7 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
 
         ImageView imageView;
         TextView competitionNumber, location, date;
+        CardView parent;
 
         Holder(@NonNull View itemView) {
             super(itemView);
@@ -98,6 +112,7 @@ public class CompetitionsAdapter extends RecyclerView.Adapter<CompetitionsAdapte
             competitionNumber = itemView.findViewById(R.id.competitionNumber);
             location = itemView.findViewById(R.id.location);
             date = itemView.findViewById(R.id.date);
+            parent = itemView.findViewById(R.id.parent);
         }
     }
 
