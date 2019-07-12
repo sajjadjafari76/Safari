@@ -28,6 +28,9 @@ import com.fanava.rally.MainActivity;
 import com.fanava.rally.R;
 import com.fanava.rally.Utils.Url;
 
+import org.angmarch.views.NiceSpinner;
+import org.angmarch.views.OnSpinnerItemSelectedListener;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +41,7 @@ public class InfomationActivity extends AppCompatActivity {
     Button btn_next;
     String name, family, national_number, license_number, password;
     SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
-    Spinner spinner1;
+    NiceSpinner spinner1;
     String[] items = {"آماتور", "متوسط", "حرفه ای"};
     int pos;
 
@@ -58,14 +61,14 @@ public class InfomationActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
         spinner1.setAdapter(adapter);
-        spinner1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        spinner1.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+            public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
                 pos = position;
                 Toast.makeText(InfomationActivity.this, position, Toast.LENGTH_SHORT).show();
             }
         });
+
         btn_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,26 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Account.LoginActivity">
+    android:background="#4b2d87">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/text"
-        android:gravity="center"
-        android:text="ثبت نام"
-        android:textColor="#111"
-        android:textSize="40sp" />
+        android:alpha="0.5"
+        android:scaleType="fitStart"
+        android:src="@drawable/top_register" />
 
-    <TextView
-        android:id="@+id/text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_above="@id/linear"
-        android:gravity="center"
-        android:text="وارد کردن شماره تلفن"
-        android:textColor="#111"
-        android:textSize="14sp" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/icon_register" />
+
 
     <LinearLayout
         android:id="@+id/linear"
@@ -33,23 +29,38 @@
         android:layout_margin="30dp"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/linear"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="وارد کردن شماره تلفن"
+            android:textColor="#fff"
+            android:textSize="14sp" />
+
         <EditText
             android:id="@+id/edt_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="شماره موبایل"
+            android:drawableEnd="@drawable/ic_phone"
             android:inputType="phone"
-            tools:ignore="MissingConstraints" />
+            android:textColor="#fff"
+            app:backgroundTint="#fff" />
 
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="دریافت کد" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_btn_login"
+            android:text="دریافت کد"
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_login"
@@ -57,7 +68,8 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="قبلا ثبت نام کردم !"
-            android:textColor="#222"
+            android:textColor="#fff"
+            android:layout_marginTop="20dp"
             android:textSize="14sp" />
     </LinearLayout>
 

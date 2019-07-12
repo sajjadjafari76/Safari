@@ -56,7 +56,7 @@ public class SliderAdapter extends PagerAdapter {
 
         imageLoader.get(utils.getSliderImageUrl(),
                 ImageLoader.getImageListener(imageView,
-                        R.drawable.spash_1,
+                        R.drawable.logo_s,
                         R.drawable.ic_car));
 
 

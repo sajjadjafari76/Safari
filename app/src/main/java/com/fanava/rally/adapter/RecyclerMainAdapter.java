@@ -53,7 +53,7 @@ public class RecyclerMainAdapter extends RecyclerView.Adapter<RecyclerMainAdapte
     @Override
     public void onBindViewHolder(RecyclerMainAdapter.Holder holder, int position) {
 
-        holder.setIsRecyclable(false);
+//        holder.setIsRecyclable(false);
         switch (position) {
             case 0:
                 holder.title.setText("مسابقات در حال برگزاری");

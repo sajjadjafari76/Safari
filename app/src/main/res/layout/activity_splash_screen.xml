@@ -23,7 +23,7 @@
             android:id="@+id/image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/spash_1" />
+            android:src="@drawable/logo_s" />
 
         <ImageView
             android:layout_marginStart="80dp"

@@ -23,6 +23,7 @@ import com.fanava.rally.Model.ClassItem;
 import com.fanava.rally.Model.ClassModel;
 import com.fanava.rally.R;
 import com.fanava.rally.Utils.EndlessRecyclerViewScrollListener;
+import com.fanava.rally.Utils.Url;
 import com.fanava.rally.adapter.CompetitionsAdapter;
 import com.fanava.rally.adapter.RecyclerMoreAdapter;
 
@@ -110,7 +111,7 @@ public class MoreFragment extends Fragment implements OnclickMore {
 
     public void sendRequestTakeover(final int count) {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, "http://46.4.174.67:90/api/Race/MainPageRace", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl+"MainPageRace", new Response.Listener<String>() {
             @Override
             public void onResponse(String respons) {
 
@@ -174,6 +175,7 @@ public class MoreFragment extends Fragment implements OnclickMore {
                 Map<String, String> map = new HashMap<>();
                 map.put("count", "30");
                 map.put("offset", String.valueOf(count));
+                map.put("mode", String.valueOf(mode));
                 return map;
             }
         };

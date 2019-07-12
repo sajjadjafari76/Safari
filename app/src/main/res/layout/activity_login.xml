@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4b2d87"
     tools:context=".Account.LoginActivity">
 
-    <TextView
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:alpha="0.5"
+        android:scaleType="fitStart"
+        android:src="@drawable/top_register" />
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_above="@id/linear"
-        android:gravity="center"
-        android:text="ورود"
-        android:textColor="#111"
-        android:textSize="40sp" />
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/login" />
 
     <LinearLayout
         android:id="@+id/linear"
@@ -23,40 +29,64 @@
         android:layout_margin="30dp"
         android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="شماره تلفن"
+            android:textColor="#fff"
+            android:textSize="16sp" />
+
         <EditText
             android:id="@+id/edt_phone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="شماره موبایل"
+            android:drawableEnd="@drawable/ic_account_login"
+            android:drawablePadding="5dp"
             android:inputType="phone"
+            android:textColor="#fff"
+            app:backgroundTint="#fff"
             tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="رمز عبور"
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
         <EditText
             android:id="@+id/edt_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:gravity="right"
-            android:hint="رمز عبور"
+            android:drawableEnd="@drawable/ic_password"
             android:inputType="textPassword"
+            android:textColor="#fff"
+            app:backgroundTint="#fff"
             tools:ignore="MissingConstraints" />
 
         <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="ورورد" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_btn_login"
+            android:text="ورورد"
+            android:textColor="#fff"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_register"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
             android:gravity="center"
             android:text="کاربر جدید هستید؟  ثبت نام"
-            android:textColor="#222"
+            android:textColor="#fff"
             android:textSize="14sp" />
     </LinearLayout>
 

@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/home_paren"
     android:layout_width="match_parent"
-    android:background="#f3f3f3"
     android:layout_height="match_parent"
+    android:background="#f3f3f3"
     tools:context=".Fragment.HomeFragment">
 
-    <ScrollView
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/paren"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -45,27 +54,28 @@
                 android:layout_below="@id/linear"
                 android:background="@drawable/bg_main_activity"
                 android:orientation="vertical">
+
                 <TextView
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="دسترسی سریع"
+                    android:layout_marginTop="20dp"
                     android:gravity="center"
-                    android:textSize="18sp"
-                    android:textColor="#111"/>
+                    android:text="دسترسی سریع"
+                    android:textColor="#111"
+                    android:textSize="18sp" />
 
                 <LinearLayout
-                    android:layout_marginTop="8dp"
                     android:id="@+id/linear_menu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="10dp">
 
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginEnd="4dp"
                         android:layout_marginStart="10dp"
+                        android:layout_marginEnd="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/back_3">
 
@@ -101,8 +111,8 @@
                     <RelativeLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
-                        android:layout_marginEnd="4dp"
                         android:layout_marginStart="4dp"
+                        android:layout_marginEnd="4dp"
                         android:layout_weight="1"
                         android:background="@drawable/back_1">
 
@@ -187,5 +197,5 @@
 
             </LinearLayout>
         </RelativeLayout>
-    </ScrollView>
-</FrameLayout>
+    </androidx.core.widget.NestedScrollView>
+</RelativeLayout>

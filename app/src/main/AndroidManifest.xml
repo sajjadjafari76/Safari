@@ -15,14 +15,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Activity.InfoTournament">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+        <activity android:name=".Activity.factorActivity">
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--<intent-filter>-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
+
+
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
+        <activity android:name=".Activity.InfoTournament">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+
         <activity android:name=".Account.Register.InfomationActivity" />
+        <activity android:name=".Activity.TournamentRecords"></activity>
+        <activity android:name=".Activity.AllRecords"></activity>
+        <activity android:name=".Activity.SendFeedback"></activity>
+        <activity android:name=".Activity.ChangePasswordActivity" />
+        <activity android:name=".Activity.EditProfileActivity"></activity>
         <activity android:name=".Account.Register.ValidateActivity" />
         <activity android:name=".Account.Register.GetPhoneActivity" />
         <activity android:name=".Account.LoginActivity" />

@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
@@ -19,8 +20,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -78,6 +81,9 @@ public class HomeFragment extends Fragment implements OnclickMore {
 
     ClassModel modelTwo = new ClassModel();
 
+    NestedScrollView paren;
+    ProgressBar progressBar;
+
     //
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -96,6 +102,10 @@ public class HomeFragment extends Fragment implements OnclickMore {
         transaction = myContext.getSupportFragmentManager().beginTransaction();
         recyclerView = view.findViewById(R.id.recyclerView);
         re_Tournament_table = view.findViewById(R.id.re_Tournament_table);
+        paren = view.findViewById(R.id.paren);
+        progressBar = view.findViewById(R.id.progress);
+        progressBar.setVisibility(View.VISIBLE);
+        paren.setVisibility(View.GONE);
 
         listItem_after = new ArrayList<>();
         listItem_last = new ArrayList<>();
@@ -253,6 +263,9 @@ public class HomeFragment extends Fragment implements OnclickMore {
             @Override
             public void onResponse(String respons) {
 
+                progressBar.setVisibility(View.VISIBLE);
+                paren.setVisibility(View.GONE);
+
                 try {
                     JSONObject jsonObject = new JSONObject(respons);
                     ClassModel model = new ClassModel();
@@ -279,8 +292,12 @@ public class HomeFragment extends Fragment implements OnclickMore {
                     recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
                     recyclerView.setAdapter(adapter);
                     modelTwo = model;
+                    progressBar.setVisibility(View.GONE);
+                    paren.setVisibility(View.VISIBLE);
 
                 } catch (JSONException e) {
+                    progressBar.setVisibility(View.GONE);
+                    paren.setVisibility(View.VISIBLE);
                     e.printStackTrace();
                 }
 
@@ -288,7 +305,8 @@ public class HomeFragment extends Fragment implements OnclickMore {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-
+                progressBar.setVisibility(View.GONE);
+                paren.setVisibility(View.VISIBLE);
             }
         });
         stringRequest.setRetryPolicy(new DefaultRetryPolicy(20000, 1, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
