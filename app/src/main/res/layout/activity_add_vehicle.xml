@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/i"
+        tools:context=".Fragment.RuleFragment">
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+
+                android:background="#5F4C9E">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="افزدون ماشین"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/img_add"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_check" />
+
+                    <ImageView
+                        android:id="@+id/img_close"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_close" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
+
+
+            <LinearLayout
+                android:id="@+id/linear"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="30dp"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/edt_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:hint="نام ماشین"
+                    android:inputType="text"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    app:backgroundTint="#fff"
+                    tools:ignore="MissingConstraints" />
+
+
+                <EditText
+                    android:id="@+id/edt_pelak"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:hint="پلاک"
+                    android:inputType="text"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    app:backgroundTint="#fff" />
+
+                <EditText
+                    android:id="@+id/edt_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:hint="مدل"
+                    android:inputType="number"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    app:backgroundTint="#fff"
+                    tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/edt_bime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:hint="بیمه"
+                    android:inputType="number"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    app:backgroundTint="#fff"
+                    tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/edt_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:hint="رنگ"
+                    android:inputType="number"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    app:backgroundTint="#fff"
+                    tools:ignore="MissingConstraints" />
+
+
+
+
+
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

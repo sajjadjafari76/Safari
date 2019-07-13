@@ -1,5 +1,7 @@
 package com.fanava.rally.Activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,10 +11,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-//import androidx.fragment.app.Fragment;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -30,10 +28,11 @@ import org.angmarch.views.NiceSpinner;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ChangePasswordActivity extends AppCompatActivity {
+public class AddCompanionActivity extends AppCompatActivity {
 
     ImageView img_add, img_close;
-    EditText edt_password_old, edt_password, edt_password_again;
+    EditText edt_name, edt_family, edt_national_number, edt_phone, edt_relation;
+    NiceSpinner spinner_gender;
 
     ProgressBar progressBar;
     RelativeLayout parent;
@@ -41,17 +40,20 @@ public class ChangePasswordActivity extends AppCompatActivity {
     SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_password);
-
+        setContentView(R.layout.activity_add_companion);
         img_add = findViewById(R.id.img_add);
         img_close = findViewById(R.id.img_close);
-        edt_password_old = findViewById(R.id.edt_password_old);
-        edt_password = findViewById(R.id.edt_password);
-        edt_password_again = findViewById(R.id.edt_password_again);
+        edt_name = findViewById(R.id.edt_name);
+        edt_family = findViewById(R.id.edt_family);
+        edt_national_number = findViewById(R.id.edt_national_number);
+        edt_phone = findViewById(R.id.edt_phone);
+        edt_relation = findViewById(R.id.edt_relation);
+        spinner_gender = findViewById(R.id.spinner_gender);
         progressBar = findViewById(R.id.progress);
         parent = findViewById(R.id.parent);
+
         img_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +69,6 @@ public class ChangePasswordActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void sendData() {
 
@@ -90,9 +91,11 @@ public class ChangePasswordActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("old",edt_password_old.getText().toString());
-                params.put("password",edt_password.getText().toString());
-                params.put("again",edt_password_again.getText().toString());
+                params.put("name",edt_name.getText().toString());
+                params.put("family",edt_family.getText().toString());
+                params.put("number",edt_national_number.getText().toString());
+                params.put("phone",edt_phone.getText().toString());
+                params.put("relation",edt_relation.getText().toString());
                 return params;
             }
 

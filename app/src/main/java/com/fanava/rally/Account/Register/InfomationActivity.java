@@ -41,9 +41,10 @@ public class InfomationActivity extends AppCompatActivity {
     Button btn_next;
     String name, family, national_number, license_number, password;
     SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
-    NiceSpinner spinner1;
-    String[] items = {"آماتور", "متوسط", "حرفه ای"};
-    int pos;
+    NiceSpinner spinnerClass, spinnerGender;
+    String[] itemsClass = {"آماتور", "متوسط", "حرفه ای"};
+    String[] itemsGender = {"زن", "مرد"};
+    int posClass, posGender;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,15 +57,26 @@ public class InfomationActivity extends AppCompatActivity {
         editText_license_number = findViewById(R.id.edt_license_number);
         editText_password = findViewById(R.id.edt_password);
         btn_next = findViewById(R.id.btn_register);
-        spinner1 = findViewById(R.id.spinner1);
+        spinnerGender = findViewById(R.id.spinner_gender);
+        spinnerClass = findViewById(R.id.spinner_class);
 
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
-        spinner1.setAdapter(adapter);
-        spinner1.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
+        ArrayAdapter<String> adapterClass = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsClass);
+        spinnerClass.setAdapter(adapterClass);
+        spinnerClass.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
             @Override
             public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
-                pos = position;
+                posClass = position;
+                Toast.makeText(InfomationActivity.this, position, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        ArrayAdapter<String> adapterGender = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, itemsGender);
+        spinnerClass.setAdapter(adapterGender);
+        spinnerClass.setOnSpinnerItemSelectedListener(new OnSpinnerItemSelectedListener() {
+            @Override
+            public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
+                posGender = position;
                 Toast.makeText(InfomationActivity.this, position, Toast.LENGTH_SHORT).show();
             }
         });
@@ -109,6 +121,8 @@ public class InfomationActivity extends AppCompatActivity {
                 params.put("family", family);
                 params.put("number", national_number);
                 params.put("license", license_number);
+                params.put("gender", String.valueOf(posGender));
+                params.put("class", String.valueOf(posClass));
                 params.put("password", password);
                 return super.getParams();
             }

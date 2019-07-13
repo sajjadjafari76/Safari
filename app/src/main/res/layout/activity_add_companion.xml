@@ -1,26 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#4b2d87">
+<layout>
 
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/i"
+        tools:context=".Fragment.RuleFragment">
 
-            <ImageView
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:visibility="visible"
+            android:id="@+id/parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:alpha="0.5"
-                android:scaleType="fitStart"
-                android:src="@drawable/top_register" />
+                android:layout_height="?attr/actionBarSize"
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_above="@id/linear"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/icon_register" />
+                android:background="#5F4C9E">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="افزدون همراه"
+                        android:textColor="#fff"
+                        android:textSize="18sp" />
+
+                    <ImageView
+                        android:id="@+id/img_add"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_check" />
+
+                    <ImageView
+                        android:id="@+id/img_close"
+                        android:layout_width="?attr/actionBarSize"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_close" />
+                </RelativeLayout>
+            </androidx.appcompat.widget.Toolbar>
 
             <LinearLayout
                 android:id="@+id/linear"
@@ -72,17 +108,31 @@
                     tools:ignore="MissingConstraints" />
 
                 <EditText
-                    android:id="@+id/edt_license_number"
+                    android:id="@+id/edt_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:gravity="right"
-                    android:hint="شماره گواهینامه"
+                    android:hint="شماره همراه"
                     android:inputType="number"
                     android:textColor="#fff"
                     android:textColorHint="#fff"
                     app:backgroundTint="#fff"
                     tools:ignore="MissingConstraints" />
+
+                <EditText
+                    android:id="@+id/edt_relation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:gravity="right"
+                    android:hint="نسبیت"
+                    android:inputType="number"
+                    android:textColor="#fff"
+                    android:textColorHint="#fff"
+                    app:backgroundTint="#fff"
+                    tools:ignore="MissingConstraints" />
+
 
                 <org.angmarch.views.NiceSpinner
                     android:id="@+id/spinner_gender"
@@ -91,39 +141,8 @@
                     android:layout_margin="10dp"
                     android:spinnerMode="dropdown" />
 
-                <org.angmarch.views.NiceSpinner
-                    android:id="@+id/spinner_class"
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_margin="10dp"
-                    android:spinnerMode="dropdown" />
-
-                <EditText
-                    android:fontFamily="@font/shabnam"
-                    android:id="@+id/edt_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:gravity="right"
-                    android:hint="رمز عبور"
-                    android:inputType="textPassword"
-                    android:textColor="#fff"
-                    android:textColorHint="#fff"
-                    app:backgroundTint="#fff"
-                    tools:ignore="MissingConstraints" />
-
-                <Button
-                    android:id="@+id/btn_register"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/bg_btn_login"
-                    android:text="ثبت نام"
-                    android:textColor="#fff"
-                    android:textSize="16sp" />
-
 
             </LinearLayout>
-
-</RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>
