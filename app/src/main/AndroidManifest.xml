@@ -18,7 +18,7 @@
         <activity android:name=".Activity.AddCompanionActivity"></activity>
         <activity android:name=".Activity.AddVehicleActivity" />
         <activity android:name=".Activity.AddNavigatActivity" />
-        <activity android:name=".Activity.factorActivity">
+        <activity android:name=".Activity.FactorActivity">
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->

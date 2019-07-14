@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="15dp">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="10dp"
+            android:fontFamily="@font/shabnam"
+            android:text="قوانین و مقررات"
+            android:textColor="#111"
+            android:textSize="18sp" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/nested"
+            android:layout_above="@+id/relative"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title">
+
+            <TextView
+                android:id="@+id/content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/shabnam"
+                android:textColor="#111" />
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_above="@id/button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/relative">
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp" />
+
+            <TextView
+                android:fontFamily="@font/shabnam"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_toStartOf="@id/checkbox"
+                android:text="موافقم" />
+        </RelativeLayout>
+
+        <Button
+            android:textSize="18sp"
+            android:textColor="#111"
+            android:fontFamily="@font/shabnam"
+            android:text="ادامه"
+            android:id="@+id/button"
+            android:layout_width="match_parent"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

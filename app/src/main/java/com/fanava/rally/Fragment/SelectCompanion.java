@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment;
 
 import com.fanava.rally.R;
 
-public class SelectAlong extends Fragment {
+public class SelectCompanion extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

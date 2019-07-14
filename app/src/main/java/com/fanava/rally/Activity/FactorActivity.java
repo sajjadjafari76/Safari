@@ -6,19 +6,25 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 
 import com.fanava.rally.Fragment.RuleFragment;
+import com.fanava.rally.Fragment.SelectCarFragment;
 import com.fanava.rally.R;
 
-public class factorActivity extends AppCompatActivity {
+public class FactorActivity extends AppCompatActivity {
 
     FragmentManager fm = getSupportFragmentManager();
+    int id;
 
-    RuleFragment ruleFragment = new RuleFragment();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_factor);
 
-        fm.beginTransaction().add(R.id.fragment_factor, ruleFragment).commit();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            bundle.getInt("id", id);
+        }
+
+        fm.beginTransaction().replace(R.id.fragment_factor, new SelectCarFragment(id)).commit();
 
     }
 }
