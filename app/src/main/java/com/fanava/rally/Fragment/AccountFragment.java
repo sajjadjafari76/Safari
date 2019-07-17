@@ -16,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.fanava.rally.Activity.AddCompanionActivity;
+import com.fanava.rally.Activity.AddNavigatActivity;
+import com.fanava.rally.Activity.AddVehicleActivity;
 import com.fanava.rally.Activity.AllRecords;
 import com.fanava.rally.Activity.ChangePasswordActivity;
 import com.fanava.rally.Activity.EditProfileActivity;
@@ -25,7 +28,7 @@ import com.fanava.rally.R;
 
 public class AccountFragment extends Fragment {
 
-    RelativeLayout tournament_records, all_records, send_feedback, change_password, edit_profile;
+    private RelativeLayout tournament_records, all_records, send_feedback, change_password, edit_profile,add_vehicle,add_companion,add_navigator;
     FragmentManager fm = getFragmentManager();
 
     FragmentTransaction transaction;
@@ -51,6 +54,9 @@ public class AccountFragment extends Fragment {
         send_feedback = view.findViewById(R.id.send_feedback);
         change_password = view.findViewById(R.id.change_password);
         edit_profile = view.findViewById(R.id.edit_profile);
+        add_navigator = view.findViewById(R.id.add_navigator);
+        add_companion = view.findViewById(R.id.add_companion);
+        add_vehicle = view.findViewById(R.id.add_vehicle);
 
         change_password.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +91,30 @@ public class AccountFragment extends Fragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getContext(), SendFeedback.class));
+            }
+        });
+
+        add_vehicle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), AddVehicleActivity.class));
+            }
+        });
+
+        add_navigator.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), AddNavigatActivity.class));
+            }
+        });
+
+        add_companion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                startActivity(new Intent(getContext(), AddCompanionActivity.class));
             }
         });
         return view;

@@ -38,12 +38,13 @@ public class AddVehicleActivity extends AppCompatActivity {
     ProgressBar progressBar;
     RelativeLayout parent;
 
-    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_vehicle);
+        prefs = getSharedPreferences("info", Context.MODE_PRIVATE);
         img_add = findViewById(R.id.img_add);
         img_close = findViewById(R.id.img_close);
         edt_name = findViewById(R.id.edt_name);

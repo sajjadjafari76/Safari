@@ -21,6 +21,8 @@ import com.fanava.rally.Model.ClassModel;
 import com.fanava.rally.R;
 import com.fanava.rally.Utils.RecyclerItemClickListener;
 import com.fanava.rally.adapter.RecyclerMainAdapter;
+import static com.fanava.rally.MainActivity.main;
+
 
 public class TournamentTableFragment extends Fragment implements OnclickMore {
 
@@ -29,7 +31,7 @@ public class TournamentTableFragment extends Fragment implements OnclickMore {
     ClassModel classModel;
     FragmentTransaction transaction;
     private FragmentActivity myContext;
-    public static boolean main;
+
 
     public TournamentTableFragment(ClassModel classModel) {
         this.classModel = classModel;

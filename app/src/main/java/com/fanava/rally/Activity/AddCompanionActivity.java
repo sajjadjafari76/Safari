@@ -37,12 +37,13 @@ public class AddCompanionActivity extends AppCompatActivity {
     ProgressBar progressBar;
     RelativeLayout parent;
 
-    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_companion);
+        prefs = getSharedPreferences("info", Context.MODE_PRIVATE);
         img_add = findViewById(R.id.img_add);
         img_close = findViewById(R.id.img_close);
         edt_name = findViewById(R.id.edt_name);
@@ -91,11 +92,11 @@ public class AddCompanionActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("name",edt_name.getText().toString());
-                params.put("family",edt_family.getText().toString());
-                params.put("number",edt_national_number.getText().toString());
-                params.put("phone",edt_phone.getText().toString());
-                params.put("relation",edt_relation.getText().toString());
+                params.put("name", edt_name.getText().toString());
+                params.put("family", edt_family.getText().toString());
+                params.put("number", edt_national_number.getText().toString());
+                params.put("phone", edt_phone.getText().toString());
+                params.put("relation", edt_relation.getText().toString());
                 return params;
             }
 

@@ -81,7 +81,7 @@ public class SelectCarFragment extends Fragment {
 
     public void getData() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "GetOne", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "Race/Factor?raceID="+id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 

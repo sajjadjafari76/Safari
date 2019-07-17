@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="match_parent"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="#ffff">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffff">
+
         <ImageView
             android:id="@+id/top"
             android:layout_width="match_parent"
@@ -26,9 +33,9 @@
             android:textSize="20sp" />
 
         <LinearLayout
-            android:layout_below="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/top"
             android:orientation="vertical">
 
             <TextView
@@ -90,6 +97,69 @@
                     android:src="@drawable/account_next" />
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/add_vehicle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="ماشین ها"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/account_next" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/add_navigator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="نقشه خوان"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/account_next" />
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/add_companion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="همراهان"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/account_next" />
+            </RelativeLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -188,4 +258,5 @@
 
         </LinearLayout>
 
-</RelativeLayout>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

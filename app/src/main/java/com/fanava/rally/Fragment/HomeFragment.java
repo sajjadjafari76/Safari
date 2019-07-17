@@ -61,7 +61,7 @@ public class HomeFragment extends Fragment implements OnclickMore {
     RequestQueue rq;
     private List<ClassSlider> sliderImg;
     private SliderAdapter viewPagerAdapter;
-    String url = "http://46.4.174.67:90/api/DataApp/Silder";
+    String url = Url.GlobalUrl+"DataApp/Silder";
 
     private ViewPager viewPager;
     private LinearLayout sliderDotspanel;
@@ -259,7 +259,7 @@ public class HomeFragment extends Fragment implements OnclickMore {
         });
 
 
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://46.4.174.67:90/api/DataApp/Races", new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.GlobalUrl+"DataApp/Races", new Response.Listener<String>() {
             @Override
             public void onResponse(String respons) {
 

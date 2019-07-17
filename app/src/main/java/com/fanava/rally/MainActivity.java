@@ -13,6 +13,8 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.ListFragment;
 
 import com.fanava.rally.Fragment.AccountFragment;
 import com.fanava.rally.Fragment.HomeFragment;
@@ -23,17 +25,17 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-import static com.fanava.rally.Fragment.TournamentTableFragment.main;
-
 //import com.fanava.rally.Fragment.TournamentTableFragment
 public class MainActivity extends AppCompatActivity {
 
-
+    public static boolean main = false;
     final Fragment homeFragment = new HomeFragment();
     final Fragment accountFragment = new AccountFragment();
     final Fragment navigationFragment = new NavigationFragment();
     final FragmentManager fm = getSupportFragmentManager();
     Fragment active = homeFragment;
+    private final static String TAG_FRAGMENT = "TAG_FRAGMENT";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         navigation.setSelectedItemId(R.id.BNV_Home);
 
 
-        fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
         fm.beginTransaction().add(R.id.main_container, navigationFragment).hide(navigationFragment).commit();
+        fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
         fm.beginTransaction().add(R.id.main_container, homeFragment).commit();
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -68,6 +70,9 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.BNV_Home:
                     if (main) {
+                        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+                            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                        }
                         fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
                         fm.beginTransaction().add(R.id.main_container, navigationFragment).hide(navigationFragment).commit();
                         fm.beginTransaction().add(R.id.main_container, homeFragment).show(homeFragment).commit();
@@ -81,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
 //
                 case R.id.BNV_Map:
                     if (main) {
+                        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+                            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                        }
                         fm.beginTransaction().add(R.id.main_container, accountFragment).hide(accountFragment).commit();
                         fm.beginTransaction().add(R.id.main_container, homeFragment).hide(homeFragment).commit();
                         fm.beginTransaction().add(R.id.main_container, navigationFragment).show(navigationFragment).commit();
@@ -96,6 +104,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.BNVAccount:
 
                     if (main) {
+                        for (Fragment fragment : getSupportFragmentManager().getFragments()) {
+                            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+                        }
                         fm.beginTransaction().add(R.id.main_container, navigationFragment).hide(navigationFragment).commit();
                         fm.beginTransaction().add(R.id.main_container, homeFragment).hide(homeFragment).commit();
                         fm.beginTransaction().add(R.id.main_container, accountFragment).show(accountFragment).commit();
@@ -111,13 +122,39 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
-
     @Override
     public void onBackPressed() {
-        try {
+        if (homeFragment.isAdded() || navigationFragment.isAdded() || accountFragment.isAdded()) {
+            finish();
+        } else {
             super.onBackPressed();
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
+
+
+    //    @Override
+//    public void onBackPressed() {
+//        int count = getSupportFragmentManager().getBackStackEntryCount();
+//
+//        if (count == 0) {
+//            super.onBackPressed();
+//            //additional code
+//        } else {
+//            getSupportFragmentManager().popBackStack();
+//        }
+//        getActivity().getSupportFragmentManager().popBackStack();
+////        if (!main) {
+//            super.onBackPressed();
+//
+//        } else {
+//            super.onBackPressed();
+//        }
+//        try {
+//            if (homeFragment.isAdded() || navigationFragment.isAdded() || accountFragment.isAdded()) {
+//                finish();
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 }

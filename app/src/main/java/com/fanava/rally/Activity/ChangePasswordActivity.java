@@ -37,14 +37,14 @@ public class ChangePasswordActivity extends AppCompatActivity {
 
     ProgressBar progressBar;
     RelativeLayout parent;
+    SharedPreferences prefs;
 
-    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
-
+        prefs = getSharedPreferences("info", Context.MODE_PRIVATE);
         img_add = findViewById(R.id.img_add);
         img_close = findViewById(R.id.img_close);
         edt_password_old = findViewById(R.id.edt_password_old);
@@ -90,9 +90,9 @@ public class ChangePasswordActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("old",edt_password_old.getText().toString());
-                params.put("password",edt_password.getText().toString());
-                params.put("again",edt_password_again.getText().toString());
+                params.put("old", edt_password_old.getText().toString());
+                params.put("password", edt_password.getText().toString());
+                params.put("again", edt_password_again.getText().toString());
                 return params;
             }
 

@@ -41,7 +41,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
     EditText editText_name, editText_family, editText_national_number, editText_license_number, editText_password;
     String name, family, national_number, license_number, password;
-    SharedPreferences prefs = this.getSharedPreferences("info", Context.MODE_PRIVATE);
+    SharedPreferences prefs;
     NiceSpinner spinnerClass, spinnerGender;
     String[] itemsClass = {"آماتور", "متوسط", "حرفه ای"};
     String[] itemsGender = {"زن", "مرد"};
@@ -56,7 +56,7 @@ public class EditProfileActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
+        prefs = getSharedPreferences("info", Context.MODE_PRIVATE);
         img_add = findViewById(R.id.img_add);
         img_close = findViewById(R.id.img_close);
         progressBar = findViewById(R.id.progress);
@@ -77,7 +77,6 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
                 posClass = position;
-                Toast.makeText(getApplicationContext(), position, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -87,7 +86,6 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(NiceSpinner parent, View view, int position, long id) {
                 posGender = position;
-                Toast.makeText(getApplicationContext(), position, Toast.LENGTH_SHORT).show();
             }
         });
 
