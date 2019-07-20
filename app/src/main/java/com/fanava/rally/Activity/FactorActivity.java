@@ -21,10 +21,10 @@ public class FactorActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            bundle.getInt("id", id);
+           id =  bundle.getInt("id", id);
+            fm.beginTransaction().replace(R.id.fragment_factor, new SelectCarFragment(id)).commit();
         }
 
-        fm.beginTransaction().replace(R.id.fragment_factor, new SelectCarFragment(id)).commit();
 
     }
 }

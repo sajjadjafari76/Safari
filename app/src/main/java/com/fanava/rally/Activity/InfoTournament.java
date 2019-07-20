@@ -5,6 +5,7 @@ import androidx.cardview.widget.CardView;
 
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,22 +32,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class InfoTournament extends AppCompatActivity {
 
     TextView text_price, number_price, text_name, text_class, text_location, text_date, text_volume;
-    CardView rule, galery;
+    CardView rule, gallery;
     Button btn_pay;
-    int id;
+    int rece_id;
     private AlertDialog dialog;
     private AlertDialog.Builder builder;
     ProgressBar progressBar;
     RelativeLayout parent;
     ClassInfoTournament infoTournament;
     String ruleText = "";
-    JSONArray jsonArray;
+    List<String> list_image;
+    JSONArray array;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,10 +59,10 @@ public class InfoTournament extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            id = bundle.getInt("id");
+            rece_id = bundle.getInt("id");
             sendRequestTakeover();
         }
-
+        list_image = new ArrayList<>();
         builder = new AlertDialog.Builder(InfoTournament.this);
 
         text_price = findViewById(R.id.text_price);
@@ -69,7 +73,7 @@ public class InfoTournament extends AppCompatActivity {
         text_date = findViewById(R.id.text_date);
         text_volume = findViewById(R.id.text_volume);
         rule = findViewById(R.id.rule);
-        galery = findViewById(R.id.galery);
+        gallery = findViewById(R.id.gallery);
         btn_pay = findViewById(R.id.btn_pay);
         parent = findViewById(R.id.parent);
         progressBar = findViewById(R.id.progress);
@@ -96,7 +100,9 @@ public class InfoTournament extends AppCompatActivity {
                         if (checkBox.isChecked()) {
 
                             Intent intent = new Intent(getApplicationContext(), FactorActivity.class);
-                            intent.putExtra("id", id);
+                            intent.putExtra("id", rece_id);
+                            startActivity(intent);
+                            dialog.dismiss();
                         } else {
                             Toast.makeText(getApplicationContext(), "با قوانین موافق نیستید !!!", Toast.LENGTH_SHORT).show();
                         }
@@ -112,17 +118,25 @@ public class InfoTournament extends AppCompatActivity {
 
             }
         });
-        galery.setOnClickListener(new View.OnClickListener() {
+        gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(getBaseContext(),GalleryActivity.class);
+                intent.putExtra("imageList", array.toString());
+                startActivity(intent);
+
+//                Uri path = Uri.parse("android.resource://irstit.transport/" + R.drawable.nerkh1);
+//                Intent fullScreenIntent = new Intent(this, FullScreenImageActivity.class);
+//                fullScreenIntent.setData(path);
+//                startActivity(fullScreenIntent);
             }
         });
     }
 
     public void sendRequestTakeover() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "Race/getone?id=" + id, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "Race/getone?id=" + rece_id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -141,7 +155,11 @@ public class InfoTournament extends AppCompatActivity {
                     text_date.setText(object.getString("raceDate"));
                     text_volume.setText(object.getString("totalCapacityCount"));
                     ruleText = object.getString("rules");
-                    jsonArray = object.getJSONArray("images");
+//                    jsonArray = object.getString("images");
+                    array = new JSONArray(object.getString("images"));
+//                    for (int i = 0; i < array.length(); i++) {
+//                        list_image.add(array.getString(i));
+//                    }
 
 
                 } catch (JSONException e) {
@@ -162,7 +180,7 @@ public class InfoTournament extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
-                map.put("id", String.valueOf(id));
+                map.put("id", String.valueOf(rece_id));
                 return map;
             }
         };

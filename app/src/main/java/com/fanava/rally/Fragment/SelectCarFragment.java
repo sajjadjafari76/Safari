@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -81,7 +82,8 @@ public class SelectCarFragment extends Fragment {
 
     public void getData() {
 
-        StringRequest stringRequest = new StringRequest(Request.Method.GET, Url.GlobalUrl + "Race/Factor?raceID="+id, new Response.Listener<String>() {
+        Log.i("asdc", "getData: "+id);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Url.GlobalUrl + "Racer/GetRacerVehicles?racerID="+id, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
 
@@ -89,11 +91,12 @@ public class SelectCarFragment extends Fragment {
                 progressBar.setVisibility(View.GONE);
                 parent.setVisibility(View.VISIBLE);
 
+                Log.i("asfladsuh", "onResponse: "+response);
 
                 bundle.putString("object", object);
 
                 recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), RecyclerView.VERTICAL, false));
-                recyclerView.setAdapter(new ItemFactorAdapter(getContext()));
+//                recyclerView.setAdapter(new ItemFactorAdapter(getContext()));
 
             }
         }, new Response.ErrorListener() {
@@ -107,6 +110,7 @@ public class SelectCarFragment extends Fragment {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
                 map.put("id", String.valueOf(id));
+                map.put("recer", String.valueOf(id));
                 return map;
             }
         };

@@ -58,6 +58,8 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.CarActivity" />
+        <activity android:name=".Activity.FullScreenImageActivity"/>
+        <activity android:name=".Activity.GalleryActivity"/>
     </application>
 
 </manifest>

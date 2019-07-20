@@ -193,4 +193,9 @@ public class MoreFragment extends Fragment implements OnclickMore {
 
 
     }
+
+    @Override
+    public void onclickImage(int more, String image) {
+
+    }
 }

@@ -93,5 +93,10 @@ public class TournamentTableFragment extends Fragment implements OnclickMore {
                 break;
         }
     }
+
+    @Override
+    public void onclickImage(int more, String image) {
+
+    }
 //
 }
